@@ -8,16 +8,11 @@ namespace TicketingApplication.Services
 {
 	public class Actionsrv : IActionsrv
 	{
-		//private readonly IRepository<Tickets> _ticketrepository;
-		//private readonly IRepository<User> _userrepository;
-
 		private readonly IUnitOfWork _unitOfWork;
 
 
-		public Actionsrv(IUnitOfWork unitOfWork /*,IRepository<Tickets> ticktrepository, IRepository<User> userrepository*/)
+		public Actionsrv(IUnitOfWork unitOfWork )
 		{
-			//_ticketrepository = ticktrepository;
-			//_userrepository = userrepository;
 			_unitOfWork = unitOfWork;
 
 		}
