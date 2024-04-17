@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace  TicketingApplication.Entities
 {
-	public class TSDBContext: DbContext
+	public class TicketingApplicationDBContext: DbContext
 	{
-		public TSDBContext(DbContextOptions<TSDBContext> options) : base(options)
+		public TicketingApplicationDBContext(DbContextOptions<TicketingApplicationDBContext> options) : base(options)
 		{
 		}
 		public DbSet<Areas> Areas { get; set; }

@@ -2,7 +2,7 @@
 
 namespace  TicketingApplication.Services
 {
-	public interface ITicketsrv
+	public interface ITicketService
 	{
 		IEnumerable<TicketsViewModel> GetAllTicket(string userid, string usertype);
 		TicketsViewModel GetTicket(int id);

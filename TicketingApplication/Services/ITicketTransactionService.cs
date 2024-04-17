@@ -2,7 +2,7 @@
 
 namespace  TicketingApplication.Services
 {
-	public interface ITicketTransactionsrv
+	public interface ITicketTransactionService
 	{
 		IEnumerable<TicketTransactionViewModel> GetTransaction(int TicketId);
 	}

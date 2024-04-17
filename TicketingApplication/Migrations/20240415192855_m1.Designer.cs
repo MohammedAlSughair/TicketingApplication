@@ -11,7 +11,7 @@ using  TicketingApplication.Entities;
 
 namespace  TicketingApplication.Migrations
 {
-    [DbContext(typeof(TSDBContext))]
+    [DbContext(typeof(TicketingApplicationDBContext))]
     [Migration("20240415192855_m1")]
     partial class m1
     {

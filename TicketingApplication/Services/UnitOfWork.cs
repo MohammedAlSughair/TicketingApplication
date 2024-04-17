@@ -5,10 +5,10 @@ namespace TicketingApplication.Services
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private TSDBContext _context;
+        private TicketingApplicationDBContext _context;
         Repository<Tickets> _ticketsRepository;
 
-		public UnitOfWork(TSDBContext context )
+		public UnitOfWork(TicketingApplicationDBContext context )
         {
             _context = context;
             TicketTransactionRepository = new Repository<TicketTransaction>(_context);

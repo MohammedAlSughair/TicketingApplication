@@ -8,16 +8,16 @@ namespace TicketingApplication.Controllers
 	[ApiController]
 	public class TicketTransactionController : ControllerBase
 	{
-		private readonly ITicketTransactionsrv _ticketTransactionsrv;
-		public TicketTransactionController(ITicketTransactionsrv ticketTransactionsrv)
+		private readonly ITicketTransactionService _ticketTransactionService;
+		public TicketTransactionController(ITicketTransactionService ticketTransactionService)
 		{
-			_ticketTransactionsrv = ticketTransactionsrv;
+			_ticketTransactionService = ticketTransactionService;
 		}
 
 		[HttpGet]
 		public IActionResult Get(int ticketid)
 		{
-			return Ok(_ticketTransactionsrv.GetTransaction(ticketid));
+			return Ok(_ticketTransactionService.GetTransaction(ticketid));
 		}
 	}
 }

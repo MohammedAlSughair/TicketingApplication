@@ -2,7 +2,7 @@
 
 namespace  TicketingApplication.Services
 {
-	public interface IUsersrv
+	public interface IUserService
 	{
 		IEnumerable<UserViewModel> GetAllUser();
 		UserViewModel GetUser(UserViewModel userViewModel);

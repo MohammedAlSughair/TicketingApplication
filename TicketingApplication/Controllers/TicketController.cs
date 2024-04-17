@@ -3,6 +3,7 @@ using TicketingApplication.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TicketingApplication.Repository;
+using NLog;
 
 namespace TicketingApplication.Controllers
 {
@@ -10,11 +11,13 @@ namespace TicketingApplication.Controllers
 	[ApiController]
 	public class TicketController : ControllerBase
 	{
-		private readonly ITicketsrv _ticketsrv;
+		private readonly ITicketService _ticketService;
+		private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-		public TicketController(ITicketsrv ticketsrv)
+
+		public TicketController(ITicketService ticketService)
 		{
-			_ticketsrv = ticketsrv;
+			_ticketService = ticketService;
 		}
 
 		[HttpGet]
@@ -22,10 +25,11 @@ namespace TicketingApplication.Controllers
 		{
 			try
 			{
-				return Ok(_ticketsrv.GetAllTicket(Request.Cookies["userid"], Request.Cookies["usertype"]));
+				return Ok(_ticketService.GetAllTicket(Request.Cookies["userid"], Request.Cookies["usertype"]));
 			}
-			catch
+			catch (Exception ex)
 			{
+				_logger.Info("Message: " + ex.Message + " --InnerException: " + ex.InnerException);
 				return BadRequest();
 			}
 		}
@@ -35,10 +39,11 @@ namespace TicketingApplication.Controllers
 		{
 			try
 			{
-				return Ok(_ticketsrv.GetTicket(id));
+				return Ok(_ticketService.GetTicket(id));
 			}
-			catch
+			catch (Exception ex)
 			{
+				_logger.Info("Message: " + ex.Message );
 				return BadRequest();
 			}
 		}
@@ -50,13 +55,15 @@ namespace TicketingApplication.Controllers
 			{
 				if (ModelState.IsValid)
 				{
-					_ticketsrv.AddTicket(tickets);
+					_ticketService.AddTicket(tickets);
 					return Ok();
 				}
 				else return BadRequest(ModelState);
 			}
-			catch
+
+			catch (Exception ex)
 			{
+				_logger.Info("Message: " + ex.Message + " --InnerException: " + ex.InnerException);
 				return BadRequest("Faild to save the Ticket");
 			}
 		}
@@ -68,13 +75,14 @@ namespace TicketingApplication.Controllers
 			{
 				if (ModelState.IsValid)
 				{
-					_ticketsrv.UpdateTicketStatus(ticket, 1);
+					_ticketService.UpdateTicketStatus(ticket, 1);
 					return Ok();
 				}
 				else return BadRequest(ModelState);
 			}
-			catch
+			catch (Exception ex)
 			{
+				_logger.Info("Message: " + ex.Message + " --InnerException: " + ex.InnerException);
 				return BadRequest("Faild to Update Ticket");
 			}
 		}

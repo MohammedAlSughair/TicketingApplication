@@ -6,8 +6,8 @@ namespace  TicketingApplication.Repository
 {
 	public class Repository<T> : IRepository<T> where T : class
 	{
-		private readonly TSDBContext _tsContext;
-		public Repository(TSDBContext tsDBContext)
+		private readonly TicketingApplicationDBContext _tsContext;
+		public Repository(TicketingApplicationDBContext tsDBContext)
 		{
 			_tsContext = tsDBContext;
 		}

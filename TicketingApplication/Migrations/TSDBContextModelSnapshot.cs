@@ -10,7 +10,7 @@ using  TicketingApplication.Entities;
 
 namespace  TicketingApplication.Migrations
 {
-    [DbContext(typeof(TSDBContext))]
+    [DbContext(typeof(TicketingApplicationDBContext))]
     partial class TSDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
